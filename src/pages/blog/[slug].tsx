@@ -37,7 +37,6 @@ export async function getStaticProps({ params: { slug }, preview }) {
     const { type, properties } = value
     if (type == 'tweet') {
       const src = properties.source[0][0]
-      // parse id from https://twitter.com/_ijjk/status/TWEET_ID format
       const tweetId = src.split('/')[5].split('?')[0]
       if (!tweetId) continue
 
@@ -142,7 +141,10 @@ const RenderPost = ({ post, redirect, preview }) => {
           <div className={blogStyles.previewAlert}>
             <b>Note:</b>
             {` `}Viewing in preview mode{' '}
-            <Link legacyBehavior={true} href={`/api/clear-preview?slug=${post.Slug}`}>
+            <Link
+              legacyBehavior={true}
+              href={`/api/clear-preview?slug=${post.Slug}`}
+            >
               <button className={blogStyles.escapePreview}>Exit Preview</button>
             </Link>
           </div>

@@ -361,8 +361,6 @@ async function getUserId() {
     body: '{}',
   })
 
-  console.log('notion token', NOTION_TOKEN)
-
   if (!res.ok) {
     throw new Error(
       `failed to get Notion user id, request status: ${res.status}`
