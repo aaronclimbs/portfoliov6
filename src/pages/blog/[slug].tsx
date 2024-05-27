@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import fetch from 'node-fetch'
 import { useRouter } from 'next/router'
 import Header from '../../components/header'
 import Heading from '../../components/heading'
@@ -92,7 +91,7 @@ const RenderPost = ({ post, redirect, preview }) => {
       key: string
       isNested?: boolean
       nested: string[]
-      children: React.ReactFragment
+      children: React.ReactNode
     }
   } = {}
 
@@ -222,7 +221,7 @@ const RenderPost = ({ post, redirect, preview }) => {
           const renderHeading = (Type: string | React.ComponentType) => {
             toRender.push(
               <Heading key={id}>
-                <Type key={id}>{textBlock(properties.title, true, id)}</Type>
+                <div key={id}>{textBlock(properties.title, true, id)}</div>
               </Heading>
             )
           }

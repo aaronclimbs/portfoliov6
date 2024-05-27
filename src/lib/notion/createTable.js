@@ -1,6 +1,5 @@
 // commonjs so it can be run without transpiling
 const { v4: uuid } = require('uuid')
-const fetch = require('node-fetch')
 const {
   BLOG_INDEX_ID: pageId,
   NOTION_TOKEN,
@@ -361,6 +360,8 @@ async function getUserId() {
     },
     body: '{}',
   })
+
+  console.log('notion token', NOTION_TOKEN)
 
   if (!res.ok) {
     throw new Error(
