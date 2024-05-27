@@ -56,7 +56,7 @@ const Index = ({ posts = [], preview }) => {
           <div className={blogStyles.previewAlert}>
             <b>Note:</b>
             {` `}Viewing in preview mode{' '}
-            <Link href={`/api/clear-preview`}>
+            <Link legacyBehavior={true} href={`/api/clear-preview`}>
               <button className={blogStyles.escapePreview}>Exit Preview</button>
             </Link>
           </div>
@@ -75,8 +75,8 @@ const Index = ({ posts = [], preview }) => {
                   {!post.Published && (
                     <span className={blogStyles.draftBadge}>Draft</span>
                   )}
-                  <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
-                    <a>{post.Page}</a>
+                  <Link legacyBehavior={true} href="/blog/[slug]" as={getBlogLink(post.Slug)}>
+                    {post.Page}
                   </Link>
                 </span>
               </h3>
