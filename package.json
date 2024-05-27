@@ -1,38 +1,35 @@
 {
-  "name": "notion-blog",
-  "version": "0.1.0",
+  "name": "nextjs-notion-blog",
+  "version": "0.1.1",
+  "private": true,
   "scripts": {
     "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "build": "next build && node .next/server/build-rss.js",
-    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
-    "lint-staged": "lint-staged"
+    "lint": "next lint --fix",
+    "predeploy": "yarn build && vercel",
+    "deploy": "vercel --prod"
   },
-  "pre-commit": "lint-staged",
+  "author": "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
+  "contributors": [
+    "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
+    "Adam Beleko <bossbele@larven.io> (https://github.com/BossBele)"
+  ],
   "dependencies": {
-    "async-sema": "^3.1.1",
-    "github-slugger": "^2.0.0",
-    "katex": "^0.16.10",
-    "next": "14.2.3",
-    "prismjs": "^1.29.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "uuid": "^9.0.1"
+    "@notionhq/client": "^2.2.3",
+    "next": "^13.4.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/katex": "0.16.7",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/uuid": "9.0.8",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
-    "lint-staged": "15.2.5",
-    "postcss": "^8",
-    "pre-commit": "1.2.2",
-    "prettier": "3.2.5",
-    "shell-quote": "^1.8.1",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "@next/eslint-plugin-next": "^13.4.16",
+    "encoding": "^0.1.13",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^13.4.16",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.3.0"
   }
 }
