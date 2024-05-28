@@ -1,6 +1,6 @@
 {
   "name": "nextjs-notion-blog",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,26 +10,29 @@
     "predeploy": "yarn build && vercel",
     "deploy": "vercel --prod"
   },
-  "author": "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
+  "author": "Aaron Keisler <aaron@keisler.dev> (https://github.com/aaronclimbs)",
   "contributors": [
+    "Aaron Keisler <aaron@keisler.dev> (https://github.com/aaronclimbs)",
     "Samuel Kraft <samuelkraft@me.com> (https://github.com/samuelkraft)",
     "Adam Beleko <bossbele@larven.io> (https://github.com/BossBele)"
   ],
   "dependencies": {
-    "@notionhq/client": "^2.2.3",
-    "next": "^13.4.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@notionhq/client": "^2.2.15",
+    "next": "^14",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.16",
+    "@next/eslint-plugin-next": "^14.2.3",
+    "@types/react": "^18",
     "encoding": "^0.1.13",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "^13.4.16",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.33.1",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-config-next": "^14.2.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "5.4.5"
   }
 }

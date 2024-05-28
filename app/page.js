@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { getDatabase } from '../lib/notion';
-import Text from '../components/text';
 import styles from './index.module.css';
 
-export const databaseId = process.env?.NOTION_DATABASE_ID ?? 'NOTION_DATABASE_ID';
+const databaseId = process.env?.NOTION_DATABASE_ID ?? 'NOTION_DATABASE_ID';
 
 async function getPosts() {
   const database = await getDatabase();
@@ -52,21 +51,16 @@ export default async function Page() {
           <p>
             This is an example of a Next.js blog with data fetched with Notions
             API. The data comes from
-            {' '}
             <a href={`https://www.notion.so/${databaseId}`}>this table</a>
             . Get
             the source code on
-            {' '}
             <a href="https://github.com/samuelkraft/notion-blog-nextjs">
               Github
             </a>
-            {' '}
             or read
-            {' '}
             <a href="https://samuelkraft.com/blog/building-a-notion-blog-with-public-api">
               my blogpost
             </a>
-            {' '}
             on building your own.
           </p>
         </header>
@@ -74,7 +68,7 @@ export default async function Page() {
         <h2 className={styles.heading}>All Posts</h2>
         <ol className={styles.posts}>
           {posts.map((post) => {
-            const date = new Date(post.last_edited_time).toLocaleString(
+            const date = new Date(post.last_edited_time).toLocaleDateString(
               'en-US',
               {
                 month: 'short',
@@ -82,17 +76,26 @@ export default async function Page() {
                 year: 'numeric',
               },
             );
-            const slug = post.properties?.Slug?.rich_text[0].text.content;
+
+            const slug = post?.properties?.Slug?.rich_text?.[0]?.text?.content;
+            const title = post?.properties?.Title?.title?.[0]?.plain_text;
+
+            if (!slug || !title) {
+              // Skip rendering if necessary data is missing
+              return null;
+            }
+
             return (
               <li key={post.id} className={styles.post}>
                 <h3 className={styles.postTitle}>
                   <Link href={`/article/${slug}`}>
-                    <Text title={post.properties?.Title?.title} />
+                    {title}
                   </Link>
                 </h3>
-
                 <p className={styles.postDescription}>{date}</p>
-                <Link href={`/article/${slug}`}>Read post →</Link>
+                <Link href={`/article/${slug}`}>
+                  Read post →
+                </Link>
               </li>
             );
           })}
