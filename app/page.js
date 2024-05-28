@@ -79,6 +79,7 @@ export default async function Page() {
 
             const slug = post?.properties?.Slug?.rich_text?.[0]?.text?.content;
             const title = post?.properties?.Title?.title?.[0]?.plain_text;
+            const tags = post?.properties?.Tags?.multi_select;
 
             if (!slug || !title) {
               // Skip rendering if necessary data is missing
@@ -87,6 +88,7 @@ export default async function Page() {
 
             return (
               <li key={post.id} className={styles.post}>
+                <Tags tags={tags} />
                 <h3 className={styles.postTitle}>
                   <Link href={`/article/${slug}`}>
                     {title}
@@ -104,3 +106,26 @@ export default async function Page() {
     </div>
   );
 }
+
+/**
+ * Renders a list of tags as a div with class name `styles.tags`.
+ *
+ * @param {Array} props.tags - An array of tags to render.
+ * @return {JSX.Element|null} - The rendered tags as a div, or null if `tags` is falsy.
+ */
+const Tags = ({ tags }) => {
+  if (!tags) {
+    return null;
+  }
+
+  console.log(tags);
+  return (
+    <div className="flex gap-2">
+      {tags.map(({color, name}) => (
+        <span key={name} className={`bg-${color}-300 rounded-full px-2 text-xs font-semibold text-gray-700`}>
+          {name}
+        </span>
+      ))}
+    </div>
+  );
+};
