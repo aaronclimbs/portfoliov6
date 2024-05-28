@@ -113,19 +113,18 @@ export default async function Page() {
  * @param {Array} props.tags - An array of tags to render.
  * @return {JSX.Element|null} - The rendered tags as a div, or null if `tags` is falsy.
  */
-const Tags = ({ tags }) => {
+function Tags({ tags }) {
   if (!tags) {
     return null;
   }
 
-  console.log(tags);
   return (
     <div className="flex gap-2">
-      {tags.map(({color, name}) => (
+      {tags.map(({ color, name }) => (
         <span key={name} className={`bg-${color}-300 rounded-full px-2 text-xs font-semibold text-gray-700`}>
           {name}
         </span>
       ))}
     </div>
   );
-};
+}
