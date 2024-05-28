@@ -5,6 +5,11 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /bg-+/, // 👈  This includes bg of all colors and shades
+    },
+  ],
   theme: {
     extend: {},
   },
